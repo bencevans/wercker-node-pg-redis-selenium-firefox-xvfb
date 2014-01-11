@@ -1,0 +1,23 @@
+name: nodejs
+version: 0.0.1
+inherits: wercker/ubuntu12.04-webessentials@0.0.3
+type: service
+platform: ubuntu@12.04
+description: wercker box with other usefull services
+keyword:
+ - postgres
+ - nodejs
+ - node
+ - redis
+ - pg
+packages:
+ - node@10.x
+script: |
+ sudo apt-get update
+ curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+ nvm install 0.10
+ sudo apt-get install -y redis-server xvfb postgresql postgresql-server-dev-all
+env:
+ NODE_ENV: test
+ 
+ 
