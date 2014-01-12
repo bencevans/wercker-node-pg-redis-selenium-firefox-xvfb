@@ -13,12 +13,38 @@ keyword:
 packages:
  - node@10.x
 script: |
- sudo apt-get update
- curl https://raw.github.com/creationix/nvm/master/install.sh | sh
- source ~/.bash_profile
- nvm install 0.10
- nvm alias default 0.10
- sudo apt-get install -y redis-server xvfb postgresql postgresql-server-dev-all
+
+  sudo apt-get update
+
+  # imagemagick
+  sudo apt-get install -y imagemagick
+
+  # node.js
+  export NODEVERSION=0.10.24
+  sudo apt-get install -y wget build-essential
+  cd $HOME
+  mkdir nodeinstall
+  cd nodeinstall
+  wget http://nodejs.org/dist/v$NODEVERSION/node-v$NODEVERSION.tar.gz
+  tar xzf node-v$NODEVERSION.tar.gz
+  cd node-v$NODEVERSION
+  ./configure
+  make
+  sudo make install > /dev/null
+  cd $HOME
+  rm -fr nodeinstall
+  node -v
+
+  # phantomjs
+  wget https://phantomjs.googlecode.com/files/phantomjs-1.9.2-linux-x86_64.tar.bz2
+  tar xfj phantomjs-1.9.2-linux-x86_64.tar.bz2
+  sudo cp phantomjs-1.9.2-linux-x86_64/bin/phantomjs /usr/local/bin
+
+  # node dependecies
+  sudo npm install -g grunt-cli
+  sudo npm install -g mocha
+
+  sudo apt-get install -y redis-server xvfb postgresql postgresql-server-dev-all
 env:
  NODE_ENV: test
  
