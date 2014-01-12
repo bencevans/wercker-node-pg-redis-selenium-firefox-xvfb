@@ -1,6 +1,6 @@
 name: nodejs
 version: 0.0.3
-inherits: wercker/ubuntu12.04-webessentials@0.0.3
+inherits: wercker/ubuntu12.04-nodejs0.10@1.0.2
 type: service
 platform: ubuntu@12.04
 description: wercker box with other usefull services
@@ -16,25 +16,6 @@ script: |
 
   sudo apt-get update
 
-  # imagemagick
-  sudo apt-get install -y imagemagick
-
-  # node.js
-  export NODEVERSION=0.10.24
-  sudo apt-get install wget build-essential
-  cd $HOME
-  mkdir nodeinstall
-  cd nodeinstall
-  wget http://nodejs.org/dist/v$NODEVERSION/node-v$NODEVERSION.tar.gz
-  tar xzvf node-v$NODEVERSION.tar.gz
-  cd node-v$NODEVERSION
-  ./configure
-  make
-  sudo make install
-  cd $HOME
-  rm -fr nodeinstall
-  node -v
-
   # phantomjs
   wget https://phantomjs.googlecode.com/files/phantomjs-1.9.2-linux-x86_64.tar.bz2
   tar xfj phantomjs-1.9.2-linux-x86_64.tar.bz2
@@ -44,6 +25,6 @@ script: |
   sudo npm install -g grunt-cli
   sudo npm install -g mocha
 
-  sudo apt-get install -y redis-server xvfb postgresql postgresql-server-dev-all
+  sudo apt-get install -y redis-server xvfb postgresql postgresql-server-dev-all firefox
 env:
   NODE_ENV: test
