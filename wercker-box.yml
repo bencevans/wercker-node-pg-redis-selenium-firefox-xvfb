@@ -17,6 +17,7 @@ script: |
  curl https://raw.github.com/creationix/nvm/master/install.sh | sh
  source ~/.bash_profile
  nvm install 0.10
+ nvm alias default 0.10
  sudo apt-get install -y redis-server xvfb postgresql postgresql-server-dev-all
 env:
  NODE_ENV: test
