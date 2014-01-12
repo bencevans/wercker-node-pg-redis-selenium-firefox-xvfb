@@ -25,6 +25,6 @@ script: |
   sudo npm install -g grunt-cli
   sudo npm install -g mocha
 
-  sudo apt-get install -y redis-server xvfb postgresql postgresql-server-dev-all firefox
+  sudo apt-get install -y redis-server xvfb postgresql postgresql-server-dev-all firefox libpq-dev
 env:
   NODE_ENV: test
