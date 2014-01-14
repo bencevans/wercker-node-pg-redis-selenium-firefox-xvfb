@@ -1,15 +1,13 @@
 name: nodejs
 version: 0.0.5
-inherits: wercker/ubuntu12.04-nodejs0.10@1.0.2
+inherits: wercker/ubuntu12.04-nodejs0.10@1.0.3
 type: service
 platform: ubuntu@12.04
 description: wercker box with other usefull services
 keyword:
-  - postgres
   - nodejs
   - node
-  - redis
-  - pg
+  - firefox
 packages:
   - node@10.x
 script: |
@@ -25,6 +23,6 @@ script: |
   sudo npm install -g grunt-cli
   sudo npm install -g mocha
 
-  sudo apt-get install -y redis-server xvfb postgresql postgresql-server-dev-all firefox libpq-dev
+  sudo apt-get install -y xvfb firefox
 env:
   NODE_ENV: test
