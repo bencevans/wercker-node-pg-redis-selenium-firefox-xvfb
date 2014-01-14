@@ -1,5 +1,5 @@
 name: nodejs
-version: 0.0.6
+version: 0.0.7
 inherits: wercker/ubuntu12.04-nodejs0.10@1.0.3
 type: service
 platform: ubuntu@12.04
@@ -14,15 +14,18 @@ script: |
 
   sudo apt-get update
 
+  # Globals
+  sudo apt-get install -y firefox build-essential curl wget libfreetype6-dev libfontconfig1-dev xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps
+
   # phantomjs
   wget https://phantomjs.googlecode.com/files/phantomjs-1.9.2-linux-x86_64.tar.bz2
   tar xfj phantomjs-1.9.2-linux-x86_64.tar.bz2
   sudo cp phantomjs-1.9.2-linux-x86_64/bin/phantomjs /usr/local/bin
 
-  # node dependecies
+  # node packages
   sudo npm install -g grunt-cli
   sudo npm install -g mocha
 
-  sudo apt-get install -y xvfb firefox
 env:
   NODE_ENV: test
+  DISPLAY: ":99.0"
