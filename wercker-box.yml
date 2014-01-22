@@ -1,5 +1,5 @@
 name: nodejs
-version: 0.0.7
+version: 0.0.8
 inherits: wercker/ubuntu12.04-nodejs0.10@1.0.3
 type: main
 platform: ubuntu@12.04
